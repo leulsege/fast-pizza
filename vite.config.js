@@ -1,7 +1,17 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import eslintPlugin from 'vite-plugin-eslint';
+import checker from 'vite-plugin-checker';
+import VitePrettier from 'vite-plugin-prettier';
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
-})
+  plugins: [
+    react(),
+    eslintPlugin(),
+    checker({
+      typescript: false,
+      prettier: true,
+    }),
+    VitePrettier(),
+  ],
+});
